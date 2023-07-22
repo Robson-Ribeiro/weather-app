@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Weather</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="weather-app">
+        <div class="container">
+            <h3 class="brand">World Weather</h3>
+            <div>
+                <h1 class="temp">9&#176;</h1>
+                <small>
+                    <span class="time">23:33</span>
+                    - 
+                    <span class="date">Saturday Jan 06</span>
+                </small>
+            </div>
+            <div class="weather">
+                <img src="./icon/day/113.png" alt="icon" class="icon" width="50" height="50" />
+                <span class="condition">Cloudy</span>
+            </div>
+        </div>
+     
+
+        <div class="panel">
+            <form id="locationInput">
+                <input type="text" class="search" placeholder="Buscar Cidade" />
+                <button type="submit" class="submit">
+                    <img class="fas fa-search" src="./icons/lupa/lupa.png" alt="icon" width="30em" height="30em"/>
+                </button>
+            </form>
+
+            <ul class="cities">
+                <li class="city">Brasília</li>
+                <li class="city">São Paulo</li>
+                <li class="city">Rio de Janeiro</li>
+                <li class="city">Santa Catarina</li>
+            </ul>
+
+            <ul class="details">
+                <h4>Como vai o tempo</h4>
+                <li>
+                    <span>Chuva</span>
+                    <span class="cloud">57%</span>
+                </li>
+                <li>
+                    <span>Umidade</span>
+                    <span class="humidity">73%</span>
+                </li>
+                <li>
+                    <span>Vento</span>
+                    <span class="cloud">16km/h</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
