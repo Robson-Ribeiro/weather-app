@@ -90,6 +90,7 @@ function fetchWeatherData() {
                 if(timeOfDay == 'night') {
                     btn.style.background = "#181e27";
                 }
+
             }   else if (
                 code == 1003 ||
                 code == 1006 ||
@@ -103,9 +104,51 @@ function fetchWeatherData() {
                 code == 1279 ||
                 code == 1282
             ) {
-                
+                app.style.backgroundImage = `url(./image/${timeOfDay}/cloudy.jpg)`;
+                btn.style.background = "#fa6d1b";
+                if(timeOfDay == 'night') {
+                    btn.style.background = "#181e27";
+                }
+            } else if (
+                code == 1063 ||
+                code == 1069 ||
+                code == 1072 ||
+                code == 1150 ||
+                code == 1153 ||
+                code == 1180 ||
+                code == 1183 ||
+                code == 1186 ||
+                code == 1189 ||
+                code == 1192 ||
+                code == 1195 ||
+                code == 1204 ||
+                code == 1207 ||
+                code == 1240 ||
+                code == 1243 ||
+                code == 1246 ||
+                code == 1249 ||
+                code == 1252 ||
+            ) {
+                app.style.backgroundImage = `url(./image/${timeOfDay}/rainy.jpg)`;
+                btn.style.background = "#647d75";
+                if(timeOfDay == 'night') {
+                    btn.style.background = "#325c80";
+                }
+            } else {
+                app.style.backgroundImage = `url(./image/${timeOfDay}/snowy.jpg)`;
+                btn.style.background = "#4d72aa";
+                if(timeOfDay == 'night') {
+                    btn.style.background = "#1b1b1b";
+                }
             }
 
+            app.style.opacity = "1";
         })
-        .catch();
+        .catch(() => {
+            alert("Busca por cidade inválida!");
+            app.style.opacity = "1";
+        });
 }
+
+fetchWeatherData();
+app.style.opacity = "1";
