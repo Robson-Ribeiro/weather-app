@@ -8,7 +8,7 @@ const icon = document.querySelector('.icon');
 const cloudOutput = document.querySelector('.cloud');
 const humidityOutput = document.querySelector('.humidity');
 const windOutput = document.querySelector('.wind');
-const form = document.getElementById('.locationInput');
+const form = document.getElementById('locationInput');
 const search = document.querySelector('.search');
 const btn = document.querySelector('.submit');
 const cities = document.querySelectorAll('.city');
@@ -31,7 +31,7 @@ form.addEventListener('submit', (e) => {
         cityInput = search.value;
         fetchWeatherData();
         search.value = "";
-        app.styel.opacity = "0";
+        app.style.opacity = "0";
     }
 });
 
@@ -45,16 +45,19 @@ function dayOfTheWeek(day, month, year) {
         "Sexta",
         "Sábado"
     ];
-    return weekDay[new Date(`${day}/${month}/${year}`).getDay()];
+    return weekDay[new Date(day, month -1, year).getDay()];
 };
 
 function fetchWeatherData() {
-    fetch(`http://api.weatherapi.com/v1/current.json?key=CHAVE=${cityInput}`)
+    fetch(`http://api.weatherapi.com/v1/current.json?key=KEY=${cityInput}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             temp.innerHTML = data.current.temp_c + "&#176;";
             conditionOutput.innerHTML = data.current.condition.text;
 
+
+            
             const date = data.location.localtime;
             const y = parseInt(date.substr(0, 4));
             const m = parseInt(date.substr(5, 2));
@@ -73,7 +76,7 @@ function fetchWeatherData() {
             icon.src ="./icons/" + iconId;
 
             cloudOutput.innerHTML = data.current.cloud + "%";
-            humidityOutput.innerHTML = data.current.himidity + "%";
+            humidityOutput.innerHTML = data.current.humidity + "%";
             windOutput.innerHTML = data.current.wind_kph + "km/h";
 
             let timeOfDay = "day";
@@ -85,7 +88,7 @@ function fetchWeatherData() {
             }
 
             if(code == 1000) {
-                app.style.backgroundImage = `url(./image/${timeOfDay}/clear.jpg)`;
+                app.style.backgroundImage = `url(./images/${timeOfDay}/clear.jpg)`;
                 btn.style.background = "#e5ba92";
                 if(timeOfDay == 'night') {
                     btn.style.background = "#181e27";
@@ -104,7 +107,7 @@ function fetchWeatherData() {
                 code == 1279 ||
                 code == 1282
             ) {
-                app.style.backgroundImage = `url(./image/${timeOfDay}/cloudy.jpg)`;
+                app.style.backgroundImage = `url(./images/${timeOfDay}/cloudy.jpg)`;
                 btn.style.background = "#fa6d1b";
                 if(timeOfDay == 'night') {
                     btn.style.background = "#181e27";
@@ -127,15 +130,15 @@ function fetchWeatherData() {
                 code == 1243 ||
                 code == 1246 ||
                 code == 1249 ||
-                code == 1252 ||
+                code == 1252
             ) {
-                app.style.backgroundImage = `url(./image/${timeOfDay}/rainy.jpg)`;
+                app.style.backgroundImage = `url(./images/${timeOfDay}/rainy.jpg)`;
                 btn.style.background = "#647d75";
                 if(timeOfDay == 'night') {
                     btn.style.background = "#325c80";
                 }
             } else {
-                app.style.backgroundImage = `url(./image/${timeOfDay}/snowy.jpg)`;
+                app.style.backgroundImage = `url(./images/${timeOfDay}/snowy.jpg)`;
                 btn.style.background = "#4d72aa";
                 if(timeOfDay == 'night') {
                     btn.style.background = "#1b1b1b";

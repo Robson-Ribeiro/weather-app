@@ -54,6 +54,12 @@ h1, h3 {
     align-items: center;
 }
 
+.container > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .city-time,
 .temp,
 .weather {
